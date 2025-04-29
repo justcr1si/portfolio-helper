@@ -3,6 +3,7 @@ from aiogram.filters import Command
 from aiogram.types import Message
 
 from database.requests import get_user, create_user
+from handlers.user_handlers.keyboard import get_main_menu
 
 start_router = Router()
 
@@ -20,5 +21,6 @@ async def cmd_start(message: Message):
     await message.answer(
         f'Привет, {message.from_user.full_name}!\n\n'
         'Это демонстрационный бот для портфолио.\n'
-        'Используй /profile чтобы посмотреть свой профиль'
+        'Используй кнопки, чтобы пользоваться ботом.',
+        reply_markup=get_main_menu()
     )
